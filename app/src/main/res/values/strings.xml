@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DrugStore</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="edit_text_hint">请输入要查询的内容。</string>
+    <string name="button_query">查询</string>
+    <string name="drug_name_hint">请输入要添加的药品名称。</string>
+    <string name="drug_standard_hint">请输入药品规格。</string>
+    <string name="drug_id_hint">请输入药品编码。</string>
+    <string name="add_drug_button">添加到数据库</string>
+    <string name="create_drug_database">创建数据库</string>
+    <string name="check_all">显示所有药品</string>
+    <string name="insert_image">插入图片</string>
+    <string name="get_data_from_net">获取网络数据</string>
+</resources>
