@@ -1,61 +1,69 @@
 package com.xinyi.duan.drugstore;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Duan on 2016/1/12.
  */
 public class InnerDatabase implements Database {
     private static InnerDatabase uniqueInstance;
-    private SQLiteHelper dbHelper = new SQLiteHelper(
-            MyApplication.getContext(), "DrugStore.db", null, 1);
 
-    private InnerDatabase() {
+    private SQLiteDatabase db;
 
+    private InnerDatabase(Context context) {
+        SQLiteHelper dbHelper = new SQLiteHelper(
+            context, "DrugStore.db", null, 1);
+        db = dbHelper.getWritableDatabase();
     }
 
-    public static InnerDatabase getInstance() {
+    public static InnerDatabase getInstance(Context context) {
         if (uniqueInstance == null) {
-            uniqueInstance = new InnerDatabase();
+            uniqueInstance = new InnerDatabase(context);
         }
         return uniqueInstance;
     }
 
     @Override
     public void add(Drug drug) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("name", drug.getName());
-        values.put("standard", drug.getStandard());
-        values.put("drug_id", drug.getId());
-        db.insert("Drug", null, values);
-        db.close();
+        if (drug != null) {
+            ContentValues values = new ContentValues();
+            values.put("name", drug.getName());
+            values.put("standard", drug.getStandard());
+            values.put("drug_id", drug.getId());
+            db.insert("Drug", null, values);
+        }
+        // db.close();
     }
 
     @Override
-    public String query(String msg) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+    public List<Drug> query(String msg) {
+        List<Drug> list = new ArrayList<>();
         Cursor cursor = db.query("Drug", null, null, null, null, null, null);
-        StringBuilder stringBuilder = new StringBuilder();
         if (cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(cursor.getColumnIndex("name"));
                 String standard = cursor.getString(cursor.getColumnIndex("standard"));
                 String id = cursor.getString(cursor.getColumnIndex("drug_id"));
-                if (name.contains(msg) || id.contains(msg))
-                    stringBuilder.append("药品名称:" + name + "\n药品规格:\n" + standard
-                            + "\n药品编号:" + id + "\n");
+                Drug drug = new Drug(name, standard, id);
+                if (name.contains(msg) || id.contains(msg)) {
+                    list.add(drug);
+                }
             } while (cursor.moveToNext());
         }
         cursor.close();
-        return stringBuilder.toString();
+        return list;
     }
 
     @Override
     public void delete(Drug drug) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("Drug", "name = ", new String[]{drug.getName()});
+        if (drug != null) {
+            db.delete("Drug", "name = ?", new String[]{drug.getName()});
+        }
     }
 }
