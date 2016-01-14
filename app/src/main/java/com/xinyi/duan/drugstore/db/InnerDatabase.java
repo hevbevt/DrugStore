@@ -1,16 +1,15 @@
-package com.xinyi.duan.drugstore;
+package com.xinyi.duan.drugstore.db;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.xinyi.duan.drugstore.model.Drug;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Duan on 2016/1/12.
- */
 public class InnerDatabase implements Database {
     private static InnerDatabase uniqueInstance;
 
@@ -22,7 +21,7 @@ public class InnerDatabase implements Database {
         db = dbHelper.getWritableDatabase();
     }
 
-    public static InnerDatabase getInstance(Context context) {
+    public synchronized static InnerDatabase getInstance(Context context) {
         if (uniqueInstance == null) {
             uniqueInstance = new InnerDatabase(context);
         }

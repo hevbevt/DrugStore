@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/drug_name_hint"/>
+        <EditText
+            android:id="@+id/edit_standard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/drug_standard_hint"/>
+        <EditText
+            android:id="@+id/edit_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/drug_id_hint"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <Button
+                android:id="@+id/add_indb_btn"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="添加到本地"/>
+
+            <Button
+                android:id="@+id/add_netdb_btn"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="添加到网络"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.xinyi.duan.drugstore.DockLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.xinyi.duan.drugstore.DockLayout>
+
+</RelativeLayout>

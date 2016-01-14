@@ -1,17 +1,18 @@
 package com.xinyi.duan.drugstore.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.xinyi.duan.drugstore.Drug;
-import com.xinyi.duan.drugstore.InnerDatabase;
+import com.xinyi.duan.drugstore.model.Drug;
+import com.xinyi.duan.drugstore.db.InnerDatabase;
 import com.xinyi.duan.drugstore.R;
 
 import java.util.ArrayList;
@@ -29,6 +30,12 @@ public class QueryActivity extends AppCompatActivity{
     private List<Drug> list;
     private InnerDatabase innerDatabase;
     private List<String> dataList = new ArrayList<>();
+
+    private Button addActivity;
+    private Button queryActivity;
+
+    private Drug selectedDrug;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +44,9 @@ public class QueryActivity extends AppCompatActivity{
         listView = (ListView) findViewById(R.id.list_view);
         queryText = (EditText) findViewById(R.id.query_text);
         queryBtn = (Button) findViewById(R.id.query_button);
+
         innerDatabase = InnerDatabase.getInstance(this);
-        adapter = new ArrayAdapter<String>(this,
+        adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, dataList);
         listView.setAdapter(adapter);
         queryBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +66,16 @@ public class QueryActivity extends AppCompatActivity{
                 }
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedDrug = list.get(position);
+                Intent intent = new Intent(QueryActivity.this, InfoActivity.class);
+                intent.putExtra("drug_data", selectedDrug);
+                startActivity(intent);
+            }
+        });
+
     }
 }

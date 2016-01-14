@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="48dp">
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/colorPrimary">
     <Button
         android:id="@+id/add_activity"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_margin="4dp"
+        android:layout_weight="1"
+        android:text="@string/dock_add"/>
     <Button
         android:id="@+id/query_activity"
         android:layout_width="wrap_content"
         android:layout_weight="1"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:text="@string/dock_query"/>
     <Button
         android:id="@+id/setting_activity"
         android:layout_weight="1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:text="@string/dock_delete"/>
 </LinearLayout>

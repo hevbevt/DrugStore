@@ -1,12 +1,9 @@
-package com.xinyi.duan.drugstore;
+package com.xinyi.duan.drugstore.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Duan on 2015/11/22.
- */
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_DRUG = "create table Drug ("

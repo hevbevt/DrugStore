@@ -28,10 +28,15 @@
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
     </ListView>
 
+    <com.xinyi.duan.drugstore.DockLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+    </com.xinyi.duan.drugstore.DockLayout>
 
 </LinearLayout>

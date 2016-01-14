@@ -2,6 +2,13 @@
     <string name="app_name">DrugStore</string>
     <string name="action_settings">Settings</string>
 
+    <string name="dock_query">药品查询</string>
+    <string name="dock_add">药品添加</string>
+    <string name="dock_setting">系统设置</string>
+    <string name="dock_delete">药品删除</string>
+
+    <string name="delete_button">删除数据</string>
+
     <string name="edit_text_hint">请输入要查询的内容。</string>
     <string name="button_query">查询</string>
     <string name="drug_name_hint">请输入要添加的药品名称。</string>

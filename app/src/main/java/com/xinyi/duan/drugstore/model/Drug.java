@@ -1,9 +1,9 @@
-package com.xinyi.duan.drugstore;
+package com.xinyi.duan.drugstore.model;
 
-/**
- * Created by Duan on 2016/1/12.
- */
-public class Drug {
+import java.io.Serializable;
+
+
+public class Drug implements Serializable {
     String name;
     String standard;
     String id;
