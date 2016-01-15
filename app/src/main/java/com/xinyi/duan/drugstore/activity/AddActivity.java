@@ -39,7 +39,7 @@ public class AddActivity extends AppCompatActivity {
                 String name = nameEt.getText().toString();
                 String standard = standardEt.getText().toString();
                 String id = idEt.getText().toString();
-
+                //如果输入框内没有内容，则要求重新输入
                 if (!name.equals("") && !standard.equals("") && !id.equals("")){
                     drug = new Drug(name, standard, id);
                     innerDatabase.add(drug);

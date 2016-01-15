@@ -1,5 +1,6 @@
 package com.xinyi.duan.drugstore;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -26,6 +27,7 @@ public class DockLayout extends LinearLayoutCompat {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), QueryActivity.class);
                 getContext().startActivity(intent);
+
             }
         });
         addActivity.setOnClickListener(new OnClickListener() {

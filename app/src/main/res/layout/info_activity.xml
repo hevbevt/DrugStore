@@ -6,17 +6,37 @@
     <TextView
         android:id="@+id/info_name"
         android:layout_width="match_parent"
-        android:layout_height="48dp" />
+        android:layout_height="48dp"
+        android:text="药品名字"
+        android:textSize="40sp"
+        android:textAlignment="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#909090"/>
 
     <TextView
         android:id="@+id/info_id"
         android:layout_width="match_parent"
-        android:layout_height="36dp" />
+        android:layout_height="36dp"
+        android:text="测试测试测试测试"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#909090"/>
 
     <TextView
         android:id="@+id/info_standard"
         android:layout_width="match_parent"
         android:layout_height="216dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#909090"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

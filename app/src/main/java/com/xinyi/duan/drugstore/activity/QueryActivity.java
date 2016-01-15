@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.xinyi.duan.drugstore.db.NetDatabase;
 import com.xinyi.duan.drugstore.model.Drug;
 import com.xinyi.duan.drugstore.db.InnerDatabase;
 import com.xinyi.duan.drugstore.R;
@@ -28,11 +29,9 @@ public class QueryActivity extends AppCompatActivity{
 
     private ArrayAdapter<String> adapter;
     private List<Drug> list;
+    private List<Drug> netList;
     private InnerDatabase innerDatabase;
     private List<String> dataList = new ArrayList<>();
-
-    private Button addActivity;
-    private Button queryActivity;
 
     private Drug selectedDrug;
 
@@ -46,6 +45,8 @@ public class QueryActivity extends AppCompatActivity{
         queryBtn = (Button) findViewById(R.id.query_button);
 
         innerDatabase = InnerDatabase.getInstance(this);
+
+        new NetDatabase().execute();
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, dataList);
         listView.setAdapter(adapter);
@@ -54,6 +55,10 @@ public class QueryActivity extends AppCompatActivity{
             public void onClick(View v) {
                 String msg = queryText.getText().toString();
                 list = innerDatabase.query(msg);
+                netList = NetDatabase.query(msg);
+                for (Drug drug : netList) {
+                    list.add(drug);
+                }
                 if (list.size() > 0) {
                     dataList.clear();
                     for (Drug drug : list) {

@@ -34,9 +34,21 @@ public class InfoActivity extends AppCompatActivity {
         deleteBtn = (Button) findViewById(R.id.delete_btn);
         drug = (Drug) getIntent().getSerializableExtra("drug_data");
         innerDatabase = InnerDatabase.getInstance(this);
-        nameTv.setText(drug.getName());
+        //如果药品名称过长，重新设置显示字号大小
+        if (drug.getName().length() >= 15) {
+            nameTv.setTextSize(16);
+            nameTv.setText(drug.getName());
+        } else if (drug.getName().length() >= 9 && drug.getName().length() < 15) {
+            nameTv.setTextSize(24);
+            nameTv.setText(drug.getName());
+        } else {
+            nameTv.setTextSize(40);
+            nameTv.setText(drug.getName());
+        }
+        //设置规格和id
         standardTv.setText(drug.getStandard());
         idTv.setText(drug.getId());
+        //删除按钮功能实现。
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
